@@ -1,25 +1,14 @@
 ---
 - name: Check if the directory already exists
   stat:
-    path: /home/frappe/tmp/
+    path: /home/frappe/frappe-bench/apps/funder_management_system
   register: path_check
 
-# - name: Create a sub-directory
-#   shell: cd /home/frappe/frappe-bench/apps/ 
-#   args:
-#     executable: /bin/bash
-#   become: yes
-#   when: not path_check.stat.exists
-
-# - name: Mark the repo directory as safe
-#   command: git config --global --add safe.directory /home/frappe/frappe-bench/apps/
-#   become: yes
-#   when: not path_check.stat.exists
-
+# TODO(chandru@): provision this id_rsa file via ansible. Right now it's manual. 
 - name: Pull private repo
   git:
     repo: git@github.com:T4GC-Official/funder_management_system.git
-    dest: /home/frappe/tmp
+    dest: /home/frappe/frappe-bench/apps/funder_management_system
     key_file: /root/.ssh/id_rsa
     accept_hostkey: yes
     version: budget_planning

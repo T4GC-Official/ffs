@@ -1,2 +1,2 @@
 [remote_servers]
-remote_host ansible_host=216.48.176.141 ansible_user=root ansible_ssh_private_key_file=~/.ssh/id_rsa
+remote_host ansible_host=216.48.176.141 ansible_user=frappe ansible_ssh_private_key_file=~/.ssh/id_rsa

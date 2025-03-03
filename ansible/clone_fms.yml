@@ -2,7 +2,6 @@
 - name: Clone the FMS GitHub repo
   hosts: remote_host
   gather_facts: true
-  become: yes
   roles:
     - private_clone
     
