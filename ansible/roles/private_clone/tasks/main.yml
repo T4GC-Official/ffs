@@ -1,0 +1,16 @@
+---
+- name: Check if the directory already exists
+  stat:
+    path: /home/frappe/frappe-bench/apps/funder_management_system
+  register: path_check
+
+# TODO(chandru@): provision this id_rsa file via ansible. Right now it's manual. 
+- name: Pull private repo
+  git:
+    repo: git@github.com:T4GC-Official/funder_management_system.git
+    dest: /home/frappe/frappe-bench/apps/funder_management_system
+    key_file: /root/.ssh/id_rsa
+    accept_hostkey: yes
+    version: budget_planning
+  when: not path_check.stat.exists
+
