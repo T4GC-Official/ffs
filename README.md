@@ -20,3 +20,6 @@ This document first assumes you have run all the "common" frappe provisioning st
 6. Run this command 
 ansible-playbook foo.yaml ...
 
+## Appendix 
+
+* Examples can be found [here](./examples)
