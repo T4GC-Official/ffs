@@ -1,0 +1,34 @@
+- name: Remove frappe from sudoers
+  shell: |
+    sudo deluser frappe sudo
+  become: yes
+  become_method: sudo
+  become_user: root
+
+- name: Remove temporary sudo privileges
+  file:
+    path: /etc/sudoers.d/frappe-temp
+    state: absent
+  become: yes
+  become_method: sudo
+  become_user: root
+
+- name: Check frappe's sudo permissions
+  shell: |
+    sudo -l
+  register: sudo_check
+  become: yes
+  become_user: frappe
+  ignore_errors: yes
+  # This adds a timeout to the sudo check, because we _expect_ it to
+  # fail TODO(prashanth@): find a way to pass this sub-task only if
+  # the check fails insted of doing this
+  async: 10
+  poll: 0
+
+- name: Debug sudo check output
+  debug:
+    msg:
+      - "RC: {{ sudo_check.rc | default('na') }}"
+      - "stdout: {{ sudo_check.stdout | default('na') }}"
+      - "stderr: {{ sudo_check.stderr | default('na') }}"

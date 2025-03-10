@@ -1,0 +1,22 @@
+- name: Check frappe's sudo permissions
+  shell: |
+    sudo -l
+  register: sudo_check
+  become: yes
+  become_user: frappe
+  ignore_errors: yes
+
+- name: Debug sudo check output
+  debug:
+    msg:
+      - "RC: {{ sudo_check.rc | default('na') }}"
+      - "stdout: {{ sudo_check.stdout | default('na') }}"
+      - "stderr: {{ sudo_check.stderr | default('na') }}"
+
+
+- name: Get App from The Private Repo
+  shell: |
+    bash -ic 'bench get-app git@github.com:T4GC-Official/funder_management_system.git'
+  args:
+    chdir: /home/frappe/frappe-bench/
+  become_user: frappe

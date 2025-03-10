@@ -1,0 +1,20 @@
+- name: Check frappe's sudo permissions
+  shell: |
+    sudo -l
+  register: sudo_check
+  become: yes
+  become_user: frappe
+  ignore_errors: yes
+
+- name: Debug sudo check output
+  debug:
+    msg:
+      - "RC: {{ sudo_check.rc | default('na') }}"
+      - "stdout: {{ sudo_check.stdout | default('na') }}"
+      - "stderr: {{ sudo_check.stderr | default('na') }}"
+
+- name: Git pull for migrating
+  shell: git pull upstream beta
+  args:
+    chdir: /home/frappe/frappe-bench/apps/funder_management_system
+  become_user: frappe

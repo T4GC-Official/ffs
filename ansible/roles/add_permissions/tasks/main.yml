@@ -1,0 +1,31 @@
+- name: Add frappe to sudoers
+  shell: |
+    sudo usermod -a -G sudo frappe
+  become: yes
+  become_method: sudo
+  become_user: root
+
+- name: Add passwordless sudo for frappe user temporarily
+  lineinfile:
+    path: /etc/sudoers.d/frappe-temp
+    line: "frappe ALL=(ALL) NOPASSWD: ALL"
+    create: yes
+    mode: "0440"
+    validate: "visudo -cf %s"
+  become: yes
+  become_method: sudo
+  become_user: root
+
+- name: Check frappe's sudo permissions
+  shell: |
+    sudo -l
+  register: sudo_check
+  become: yes
+  become_user: frappe
+
+- name: Debug sudo check output
+  debug:
+    msg:
+      - "RC: {{ sudo_check.rc | default('na') }}"
+      - "stdout: {{ sudo_check.stdout | default('na') }}"
+      - "stderr: {{ sudo_check.stderr | default('na') }}"
