@@ -28,6 +28,3 @@ $ ansible-playbook -e <sitename>
 ```
 All sites are currently read from the production server's `frappe-bench` directory.
 
-## Appendix 
-
-* Examples can be found [here](./examples)
