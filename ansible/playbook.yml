@@ -27,15 +27,15 @@
 #   tags:
 #     - install_app
 
-# - name: Git pull the new changes
-#   hosts: all
-#   gather_facts: yes
-#   become: yes
-#   become_user: frappe
-#   roles:
-#     - git_pull
-#   tags:
-#     - git_pull
+- name: Git pull the new changes
+  hosts: all
+  gather_facts: yes
+  become: yes
+  become_user: frappe
+  roles:
+    - git_pull
+  tags:
+    - git_pull
 
 
 - name: Run migrate bench command for the site
