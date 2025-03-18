@@ -20,6 +20,13 @@ This document first assumes you have run all the "common" frappe provisioning st
 6. Run this command 
 ansible-playbook foo.yaml ...
 
-## Appendix 
 
-* Examples can be found [here](./examples)
+## Update sites 
+
+Run 
+```
+$ ansible-playbook -e <sitename>
+```
+All sites are currently read from the production server's `frappe-bench` directory.
+
+

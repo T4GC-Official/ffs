@@ -1,0 +1,7 @@
+- name: Capture System Performance with `top`
+  shell: top -b -n 1
+  register: top_output
+
+- name: Display System Performance
+  debug:
+    var: top_output.stdout_lines
