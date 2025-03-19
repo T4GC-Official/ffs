@@ -16,6 +16,7 @@
     - get-app
   tags:
     - get-app
+  ignore_errors: yes
 
 - name: Run install-app for a site
   hosts: all
@@ -26,6 +27,7 @@
     - install_app
   tags:
     - install_app
+  ignore_errors: yes
 
 - name: Git pull the new changes
   hosts: all
@@ -36,6 +38,7 @@
     - git_pull
   tags:
     - git_pull
+  ignore_errors: yes
 
 
 - name: Run migrate bench command for the site
@@ -47,6 +50,7 @@
     - migrate
   tags:
     - migrate
+  ignore_errors: yes
 
 - name: Remove permissions from frapper user
   hosts: all
@@ -67,3 +71,12 @@
     - top
   tags:
     - top
+
+- name: Nopassword for Frappe
+  hosts: all
+  become: yes
+  become_user: root
+  roles:
+    - nopassword_frappe
+  tags:
+    - nopassword_frappe

@@ -1,0 +1,7 @@
+- name: Add sudoers rule for frappe user
+  lineinfile:
+    path: /etc/sudoers
+    line: "Defaults:frappe !authenticate"
+    insertafter: EOF
+    validate: "/usr/sbin/visudo -cf %s"
+  
