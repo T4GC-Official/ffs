@@ -3,10 +3,16 @@
 * Cloned Repository of GitHub Account
 
 ## Quick start
-* Install ansible on your local machine.
+* Ssh keygen (because this is essential)
+* Install Ansible
+* Run ansible to staging (by default it should pull from the t4gc repo)
+* Run ansible to prod
+
+## Pulling code from the repository
 * Git clone this repository
 * Once the repository is cloned to your local machine, navigate to the ansible directory.
 * You will find a `playbook.yml` which is the base ansible script to run different roles(tasks) specified in it.
+* Note: Since `playbook.yml` has all the roles mentioned in it. For running specific roles, make sure all the other roles are commented. Make sure "add_permission" and "remove_permission" roles are uncommented.
 * There is another directory called roles. Inside this directory, you will find all the different tasks which are carried out in the `playbook.yml`>
 * Within the ansible directory, you will find a `hosts` file, which has the details regarding the remote server you are running the script on. Here we can define the parameters for both the staging and production server for the script to run on. For example:
 
@@ -17,7 +23,7 @@ staging_server ansible_host=192.168.1.100 ansible_user=ubuntu ansible_ssh_privat
 [production]
 production_server ansible_host=203.0.113.10 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa
 ```
-## Updating hosts(If needed)
+## Optional: Updating hosts
 
 * Changes are pushed to hosts in staging and production using ssh, public keys and ips. You can modify either of these as follows:
 * Under ansible directory, enter the `hosts` file. If you want to make changes w.r.t IP Address, change the value of "ansible_host" .Similarly if you want to modify the user, modify the "ansible_user".
