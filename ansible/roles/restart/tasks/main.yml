@@ -13,8 +13,9 @@
       - "stdout: {{ sudo_check.stdout | default('na') }}"
       - "stderr: {{ sudo_check.stderr | default('na') }}"
 
-- name: Git pull for migrating
-  shell: git pull 
+- name: Bench Restart
+  shell: |
+    bench restart
   args:
-    chdir: /home/frappe/frappe-bench/apps/funder_management_system
+    chdir: /home/frappe/frappe-bench/
   become_user: frappe

@@ -22,10 +22,10 @@
   # capture exit code 
 
   # TODO(issues/4): bench reruns pass but first run fails so just run it twice if necessary
-- name: Migrate the site - only if first attempt crashes
+  # - name: Migrate the site - only if first attempt crashes
   # check exit code 
-  shell: |
-    bash -ic 'bench --site {{ sitename }} migrate'
-  args:
-    chdir: /home/frappe/frappe-bench/
-  become_user: frappe
+  # shell: |
+  #  bash -ic 'bench --site {{ sitename }} migrate'
+  #args:
+   # chdir: /home/frappe/frappe-bench/
+  #become_user: frappe
