@@ -16,7 +16,7 @@
 
 - name: Get App from The Private Repo
   shell: |
-    bash -ic 'bench get-app git@github.com:T4GC-Official/funder_management_system.git'
+    bash -ic 'bench get-app git@github.com:T4GC-Official/funder_management_system.git --branch 1.0.0-beta.2 --overwrite'
   args:
     chdir: /home/frappe/frappe-bench/
   become_user: frappe

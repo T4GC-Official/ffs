@@ -1,0 +1,42 @@
+- name: Give permissions to frapper user
+  hosts: all
+  become: yes
+  become_user: root
+  roles:
+    - add_permissions
+  tags:
+    - add_permissions
+
+- name: Run get-app on bench directory
+  hosts: all
+  gather_facts: yes
+  become: yes
+  become_user: frappe
+  roles:
+    - get-app
+  tags:
+    - get-app
+  ignore_errors: yes
+
+
+- name: Run migrate bench command for the site
+  hosts: all
+  gather_facts: yes
+  become: yes
+  become_user: frappe
+  roles:
+    - migrate
+  tags:
+    - migrate
+  ignore_errors: yes
+
+
+- name: Remove permissions from frapper user
+  hosts: all
+  become: yes
+  gather_facts: no
+  become_user: root
+  roles:
+    - remove_permissions
+  tags:
+    - remove_permissions
