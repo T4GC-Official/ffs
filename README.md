@@ -25,8 +25,7 @@ ansible-playbook foo.yaml ...
 
 Run 
 ```
-$ ansible-playbook -e <sitename>
+$ cd ansible 
+$ ansible-playbook -e <sitename> playbooks/frappe.yml
 ```
 All sites are currently read from the production server's `frappe-bench` directory.
-
-

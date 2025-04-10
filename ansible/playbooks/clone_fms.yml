@@ -3,5 +3,5 @@
   hosts: remote_host
   gather_facts: true
   roles:
-    - private_clone
+    - frappe/private_clone
     
