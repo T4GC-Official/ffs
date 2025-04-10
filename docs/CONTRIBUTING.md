@@ -56,3 +56,44 @@ $ git fetch origin
 $ git rebase origin/main 
 $ gith checkoub -b feature_foobar_2
 ```
+
+## Adding new scripts 
+
+For your understanding, here is a conceptual layout of this repo. Place your scripts in the appropriate directory. 
+
+```console 
+ansible/
+├── README.md
+├── inventories/ (currently unimplemented) 
+│   ├── staging/
+│   │   ├── hosts.yml (currently this is combined in a global hosts file)
+│   │   └── group_vars/
+│   │       └── all.yml
+│   └── production/
+│       ├── hosts.yml (currently this is combined in a global hosts file) 
+│       └── group_vars/
+│           └── all.yml
+├── playbooks/ (this has "server" specific scripts, eg frappe calls bench install and bench update) 
+│   ├── frappe.yml
+│   ├── cloudflare_tunnel.yml
+│   ├── grafana.yml
+│   └── site.yml  # calls the other playbooks for full-stack provisioning
+├── roles/ (this has individual tasks done within a server, eg bench update for frappe) 
+│   ├── frappe/
+│   │   ├── tasks/
+│   │   │   └── main.yml
+│   │   └── vars/
+│   │       └── main.yml
+│   ├── cloudflare_tunnel/
+│   │   └── ...
+│   └── grafana/
+│       └── ...
+├── files/
+│   └── common config files or binaries (nothing here now) 
+├── group_vars/
+│   └── all.yml (all variables, or role-specific if needed)
+├── host_vars/
+│   └── <hostname>.yml
+└── ansible.cfg (global ansible configs, eg where roles/ directory is) 
+```
+
