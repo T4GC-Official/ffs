@@ -8,22 +8,28 @@ See [CONTRIBUTING.md](./docs/CONTRIBUTING.md)
 
 ## Provisioning 
 
-...here document whatever is needed to get the current script running. Eg: 
+### Provisioning a VM
 
-This document first assumes you have run all the "common" frappe provisioning steps. You can find those [here]( - insert link to frappe setup docs - ).
+If you already have a VM, skip to the next section. Otherwise, read [HOSTS.md](./docs/HOSTS.md) guide to provision a VM. 
+
+### Provisioning flake/frappe onto the VM
+Checkout [https://github.com/T4GC-Official/frappe-deployment-doc/tree/Final_doc] for setting up Frappe and it's dependent packages installations.
+
 
 1. Generate ssh keys 
 2. Add public key to vm with ip under `ansible_host`
-3. Point ansible_ssh_private_key_file to private key ...
+3. Point `ansible_ssh_private_key_file` to private key ...
 4. Generate a public/private key for github and add it to the repo
 5. set the `key_file` variable to the path of the private key 
 6. Run this command 
-ansible-playbook foo.yaml ...
+```console
+$ ansible-playbook foo.yaml ...
+```
 
 ## Update sites 
 
 Run 
-```
+```console
 $ ansible-playbook -e <sitename>
 ```
 All sites are currently read from the production server's `frappe-bench` directory.
