@@ -5,7 +5,7 @@ We take pull requests. Here is an outline of the github pr flow.
 * Visit https://github.com/T4GC-Official/ffs
 * Click Fork button (top right) to create your fork
 
-<img src="https://github.com/T4GC-Official/count/raw/main/images/fork.png" width="300">
+<img src="https://github.com/T4GC-Official/ffs/raw/main/images/fork.png" width="300">
  
 * Create your clone (where `$user` is your github username):
 ```
@@ -38,7 +38,7 @@ $ git push -f origin feature_foobar
 * Visit your fork `https://github.com/$user/ffs`
 * Click the Compare & Pull Request button next to your `feature_foobar` branch. This will create a pull request, assign it to someone for code review
 
-<img src="https://github.com/T4GC-Official/count/raw/main/images/pr.png" width="300">
+<img src="https://github.com/T4GC-Official/ffs/raw/main/images/pr.png" width="300">
 
 * Modify code locally 
 * Re-commit
